@@ -101,6 +101,12 @@ $(document).ready(function(){
 		})
 	};
 */
+	$('#carousel-awards').slick({
+		speed: 1500,
+		autoplay: true,
+  		autoplaySpeed: 6000,
+		pauseOnFocus: false
+	});
 
 	function getGridSize() {
 		return (window.innerWidth < 767) ? 1 :
@@ -591,16 +597,62 @@ $(document).ready(function(){
 	var acc = document.getElementsByClassName("acc");
 
 	for (i = 0; i < acc.length; i++) {
-	acc[i].addEventListener("click", function() {
-		this.classList.toggle("active");
-		var panel = this.nextElementSibling;
-		if (panel.style.maxHeight){
-		panel.style.maxHeight = null;
-		} else {
-		panel.style.maxHeight = panel.scrollHeight + "px";
-		} 
-	});
+		acc[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var panel = this.nextElementSibling;
+			if (panel.style.maxHeight){
+			panel.style.maxHeight = null;
+			} else {
+			panel.style.maxHeight = panel.scrollHeight + "px";
+			} 
+		});
 	}
+
+	// open overviw tab when page loads
+	if ($("#tabDefaultOpen")[0]){
+		document.getElementById("tabDefaultOpen").click();
+	}
+
+	// tab scrolls to content on mobile
+	$(".overview-btn").click(function() {
+		if ($(window).width() < 769){
+			$('html, body').animate({
+				scrollTop: $("#Overview").offset().top
+			}, 1000);
+		}
+	});
+
+	$(".courses-btn").click(function() {
+		if ($(window).width() < 769){
+			$('html, body').animate({
+				scrollTop: $("#Courses").offset().top
+			}, 1000);
+		}
+	});
+
+	$(".tuition-btn").click(function() {
+		if ($(window).width() < 769){
+			$('html, body').animate({
+				scrollTop: $("#Tuition").offset().top
+			}, 1000);
+		}
+	});
+
+	$(".apply-btn").click(function() {
+		if ($(window).width() < 769){
+			$('html, body').animate({
+				scrollTop: $("#Apply").offset().top
+			}, 1000);
+		}
+	});
+
+	$(".why-messiah-btn").click(function() {
+		if ($(window).width() < 769){
+			$('html, body').animate({
+				scrollTop: $("#Messiah").offset().top
+			}, 1000);
+		}
+	});
 
 });
 
@@ -618,8 +670,6 @@ function openTabContent(evt, eventName) {
 	document.getElementById(eventName).style.display = "block";
 	evt.currentTarget.className += " active";
 }
-
-document.getElementById("tabDefaultOpen").click();
 
 
 
